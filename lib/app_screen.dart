@@ -3,25 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import 'news.dart';
 import 'list_of_screens.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key, required this.title});
+class AppScreen extends StatefulWidget {
+  AppScreen({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<AppScreen> createState() => _AppScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _AppScreenState extends State<AppScreen> {
   String text = 'before';
   int _selectedIndex = 0;
 
   Future<void> _handleRefresh() async {
     Future.delayed(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
     );
     selectDegree.clear();
     selectProgram.clear();
@@ -47,17 +46,28 @@ class _MyHomePageState extends State<MyHomePage> {
     double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Center(child: Text(widget.title)),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Color.fromRGBO(64, 165, 120, 1),
+              Color.fromRGBO(157, 222, 139, 1),
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+          ),
+        ),
+        title: Center(
+          child: Text(
+            widget.title,
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
         elevation: 0,
       ),
       body: LiquidPullToRefresh(
         onRefresh: _handleRefresh,
         height: 100,
-        backgroundColor: Colors.purple[300],
-        color: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: const Color.fromRGBO(230, 255, 148, 1),
+        color: Colors.lightGreen,
         showChildOpacityTransition: false,
         borderWidth: 5,
         animSpeedFactor: 2,
@@ -66,9 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Container(
               height: deviceHeight - 200,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
-              decoration: BoxDecoration(color: Colors.purple[300]),
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(
+                  left: 10, right: 10, top: 10, bottom: 20),
+              decoration: BoxDecoration(
+                  color: const Color.fromRGBO(64, 165, 120, 1),
+                  borderRadius: BorderRadius.circular(10)),
               child: listOfScreens[_selectedIndex],
             ),
           ],
@@ -76,31 +89,30 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [
-            Theme.of(context).colorScheme.inversePrimary,
-            Colors.purple
-          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+          gradient: const LinearGradient(
+            colors: [
+              Color.fromRGBO(64, 165, 120, 1),
+              Color.fromRGBO(157, 222, 139, 1),
+            ],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+          ),
+          borderRadius: BorderRadius.circular(10),
         ),
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(5),
         width: deviceWidth,
         child: GNav(
           selectedIndex: _selectedIndex,
           onTabChange: _navigateBottomBar,
           gap: 5,
-          tabBorderRadius: 20,
-          tabShadow: [
-            BoxShadow(
-                color: Theme.of(context).colorScheme.inversePrimary,
-                blurRadius: 15)
-          ],
+          tabBorderRadius: 10,
           curve: Curves.bounceIn,
-          padding: EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
-          activeColor: Colors.black,
-          tabBackgroundGradient: LinearGradient(
-              colors: [Colors.purple, Colors.purpleAccent],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomLeft),
-          tabs: [
+          padding:
+              const EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
+          activeColor: Colors.white,
+          tabBackgroundColor: const Color.fromRGBO(64, 165, 120, 1),
+          tabs: const [
             GButton(
               icon: Icons.timelapse_rounded,
               text: 'Latest News',

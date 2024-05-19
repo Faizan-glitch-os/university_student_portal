@@ -20,7 +20,10 @@ List<Widget> listOfScreens = [
         padding: const EdgeInsets.all(8.0),
         child: Text(
           latestNews[index],
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
       );
     },
@@ -32,247 +35,266 @@ List<Widget> listOfScreens = [
         padding: const EdgeInsets.all(8.0),
         child: Text(
           scholarships[index],
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
       );
     },
   ),
-  Column(
-    mainAxisAlignment: MainAxisAlignment.center,
+  ListView(
     children: [
       TextField(
         controller: selectDegree,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Select Degree',
           suffixIcon: IconButton(
             onPressed: () {
               selectDegree.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: selectProgram,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Select Program',
           suffixIcon: IconButton(
             onPressed: () {
               selectProgram.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: semester,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Semester',
           suffixIcon: IconButton(
             onPressed: () {
               semester.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: rollNo,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Roll Number',
           suffixIcon: IconButton(
             onPressed: () {
               rollNo.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       ElevatedButton(
+        style: ButtonStyle(
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
         onPressed: () {
           print('Degree: $selectDegree');
           print('Program: $selectProgram');
           print('Semester: $semester');
           print('Roll Number: $rollNo');
         },
-        child: Text('Submit'),
+        child: const Text('Submit'),
       ),
     ],
   ),
-  Column(
-    mainAxisAlignment: MainAxisAlignment.center,
+  ListView(
     children: [
       TextField(
         controller: selectDegree,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Select Degree',
           suffixIcon: IconButton(
             onPressed: () {
               selectDegree.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: selectProgram,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Select Program',
           suffixIcon: IconButton(
             onPressed: () {
               selectProgram.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: semester,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Semester',
           suffixIcon: IconButton(
             onPressed: () {
               semester.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: rollNo,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Roll Number',
           suffixIcon: IconButton(
             onPressed: () {
               rollNo.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       TextField(
         controller: selectDocument,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Select Document',
           suffixIcon: IconButton(
             onPressed: () {
               selectDocument.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: name,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Name',
           suffixIcon: IconButton(
             onPressed: () {
               name.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: sonOrDaughter,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Son/Daughter of',
           suffixIcon: IconButton(
             onPressed: () {
               sonOrDaughter.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       TextField(
         controller: cnic,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'CNIC',
           suffixIcon: IconButton(
             onPressed: () {
               cnic.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       TextField(
         controller: phoneNo,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: 'Phone Number',
           suffixIcon: IconButton(
             onPressed: () {
               phoneNo.clear();
             },
-            icon: Icon(Icons.clear),
+            icon: const Icon(Icons.clear),
           ),
         ),
       ),
+      const SizedBox(
+        height: 20,
+      ),
       ElevatedButton(
+        style: ButtonStyle(
+          elevation: const MaterialStatePropertyAll(0),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
         onPressed: () {
           print('Degree: $selectDegree');
           print('Program: $selectProgram');
@@ -284,7 +306,7 @@ List<Widget> listOfScreens = [
           print('CNIC: $cnic');
           print('Phone Number: $phoneNo');
         },
-        child: Text('Submit'),
+        child: const Text('Submit'),
       ),
     ],
   ),
