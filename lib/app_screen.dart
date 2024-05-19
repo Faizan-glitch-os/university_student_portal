@@ -23,6 +23,15 @@ class _MyHomePageState extends State<MyHomePage> {
     Future.delayed(
       Duration(seconds: 3),
     );
+    selectDegree.clear();
+    selectProgram.clear();
+    semester.clear();
+    rollNo.clear();
+    selectDocument.clear();
+    name.clear();
+    sonOrDaughter.clear();
+    cnic.clear();
+    phoneNo.clear();
   }
 
   void _navigateBottomBar(int index) {
