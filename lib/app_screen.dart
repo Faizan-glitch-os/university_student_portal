@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+import 'news.dart';
+import 'list_of_screens.dart';
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({super.key, required this.title});
 
@@ -14,12 +17,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String text = 'before';
+  int _selectedIndex = 0;
 
   Future<void> _handleRefresh() async {
-    Future.delayed(Duration(seconds: 3));
+    Future.delayed(
+      Duration(seconds: 3),
+    );
+  }
+
+  void _navigateBottomBar(int index) {
     setState(() {
-      text = 'Refershed';
+      _selectedIndex = index;
     });
+    print(_selectedIndex);
   }
 
   @override
@@ -31,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Theme.of(context).colorScheme.secondary,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Center(child: Text(widget.title)),
         elevation: 0,
       ),
       body: LiquidPullToRefresh(
@@ -46,25 +56,29 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           children: [
             Container(
-                padding: EdgeInsets.all(10),
-                margin:
-                    EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
-                decoration: BoxDecoration(color: Colors.purple[300]),
-                child: Text(text)),
+              height: deviceHeight - 200,
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
+              decoration: BoxDecoration(color: Colors.purple[300]),
+              child: listOfScreens[_selectedIndex],
+            ),
           ],
         ),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Theme.of(context).colorScheme.inversePrimary,
-          Colors.purple
-        ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
+          gradient: LinearGradient(colors: [
+            Theme.of(context).colorScheme.inversePrimary,
+            Colors.purple
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+        ),
         padding: EdgeInsets.all(10),
         width: deviceWidth,
         child: GNav(
+          selectedIndex: _selectedIndex,
+          onTabChange: _navigateBottomBar,
           gap: 5,
-          tabBorderRadius: 10,
+          tabBorderRadius: 20,
           tabShadow: [
             BoxShadow(
                 color: Theme.of(context).colorScheme.inversePrimary,
@@ -80,19 +94,19 @@ class _MyHomePageState extends State<MyHomePage> {
           tabs: [
             GButton(
               icon: Icons.timelapse_rounded,
-              text: 'Renewal',
+              text: 'Latest News',
             ),
             GButton(
               icon: Icons.timelapse_rounded,
-              text: 'Renewal',
+              text: 'Scholarships',
             ),
             GButton(
               icon: Icons.timelapse_rounded,
-              text: 'Renewal',
+              text: 'Renewal Slip',
             ),
             GButton(
               icon: Icons.timelapse_rounded,
-              text: 'Renewal',
+              text: 'Deposit Slips',
             ),
           ],
         ),
